@@ -76,7 +76,6 @@ class App extends React.Component{
     onClear(){
         let data=this.state.data;
         data = data.filter(elem=>{return elem.date !== this.state.text});
-        this.state.data = data.filter(elem=>{return elem.date !== this.state.text});
         this.setState({data});
         localStorage.setItem('data', JSON.stringify(data));
         this.onTotal();
