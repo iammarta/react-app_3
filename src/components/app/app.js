@@ -113,7 +113,6 @@ render() {
 </div>
                 <button type="submit" className="btn btn-outline-dark" onClick={this.onAdd}><i className="fa fa-plus"></i></button>
     </form>
-    <br/>
             <div className="row">
   <div className="col-sm-6">
     <div className="card">
