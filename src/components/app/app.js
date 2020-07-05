@@ -32,7 +32,7 @@ class App extends React.Component{
        this.onDelete = this.onDelete.bind(this);
        this.onTotal = this.onTotal.bind(this);
        this.onCheck = this.onCheck.bind(this);
-       this.onClear = this.onClear.bind(this);
+      this.onClear = this.onClear.bind(this);
     }
     onCheck(e){
         this.setState({ text : e.target.value });
@@ -43,9 +43,8 @@ class App extends React.Component{
         let date=this.state.date;
         let expense=this.state.expense;
         let price = this.state.price;
-        let total = this.state.total;
         if (price && expense ){
-            data.push({ expense: expense, price: price, date: date, delete: false, total: total });
+            data.push({ expense: expense, price: price, date: date, delete: false });
             data.sort(function (a, b) { return new Date(b.date) - new Date(a.date)});
             this.setState({ data: data, expense: '', price: '', date:'' });
             localStorage.setItem('data', JSON.stringify(data));
@@ -73,14 +72,15 @@ class App extends React.Component{
         localStorage.setItem('data', JSON.stringify(data));
         this.onTotal();
     }
+    
     onClear(){
         let data=this.state.data;
         data = data.filter(elem=>{return elem.date !== this.state.text});
-        this.state.data = data.filter(elem=>{return elem.date !== this.state.text});
         this.setState({data});
         localStorage.setItem('data', JSON.stringify(data));
         this.onTotal();
     }
+    
     onTotal(){
         let data=this.state.data;
         if(data)
@@ -113,6 +113,8 @@ render() {
 </div>
                 <button type="submit" className="btn btn-outline-dark" onClick={this.onAdd}><i className="fa fa-plus"></i></button>
     </form>
+    <br/>
+    <br/>
             <div className="row">
   <div className="col-sm-6">
     <div className="card">
